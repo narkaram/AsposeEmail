@@ -24,17 +24,17 @@ namespace mail
         {
             button1.Enabled = false;
             ImapClient client = new ImapClient();
-            client.Host = textBox3.Text;
-            client.Port = Convert.ToInt32(textBox4.Text);
-            client.Username = textBox1.Text;
-            client.Password = textBox2.Text;
+            client.Host = "imap.yandex.ru";  //"imap.mail.ru"
+            client.Port = 993;
+            client.Username = "testLibrary123@yandex.ru"; //"librarytest123@mail.ru"
+            client.Password = "TestTest123"; // "support321"
             client.SecurityOptions = SecurityOptions.SSLImplicit;
 
             ImapQueryBuilder imapQueryBuilder = new ImapQueryBuilder(Encoding.Default);
             
             imapQueryBuilder.Subject.Contains("поддержка"); //necessarily writing in Russian, as it does not work without encoding (Unsupporting encoding)
             
-            imapQueryBuilder.InternalDate.On(Convert.ToDateTime("26.03.2020"));
+            imapQueryBuilder.InternalDate.On(Convert.eTime("31.03.2020"));
                 
 
             MailQuery query;
@@ -55,5 +55,6 @@ namespace mail
             }
             button1.Enabled = true;
         }
+        
     }
 }
